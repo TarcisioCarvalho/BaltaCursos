@@ -1,0 +1,15 @@
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\bin\Debug\net6.0\Balta.exe
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\bin\Debug\net6.0\Balta.deps.json
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\bin\Debug\net6.0\Balta.runtimeconfig.json
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\bin\Debug\net6.0\Balta.dll
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\bin\Debug\net6.0\Balta.pdb
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\obj\Debug\net6.0\Balta.csproj.AssemblyReference.cache
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\obj\Debug\net6.0\Balta.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\obj\Debug\net6.0\Balta.AssemblyInfoInputs.cache
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\obj\Debug\net6.0\Balta.AssemblyInfo.cs
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\obj\Debug\net6.0\Balta.csproj.CoreCompileInputs.cache
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\obj\Debug\net6.0\Balta.dll
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\obj\Debug\net6.0\refint\Balta.dll
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\obj\Debug\net6.0\Balta.pdb
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\obj\Debug\net6.0\Balta.genruntimeconfig.cache
+C:\Users\tarci\Documents\BaltaCursos\CsharpOrientacaoObjetos\Balta\obj\Debug\net6.0\ref\Balta.dll
