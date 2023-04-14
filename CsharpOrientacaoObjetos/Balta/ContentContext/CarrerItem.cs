@@ -12,6 +12,7 @@ namespace BALTA.ContentContext
 
         public CarrerItem(int order,string title,string description,Course course)
         {
+            if(course == null) throw new Exception("O Curso não pode ser nullo");
             Order = order;
             Title = title;
             Description = description;

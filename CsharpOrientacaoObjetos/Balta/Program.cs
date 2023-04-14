@@ -24,16 +24,16 @@ courses.Add(courseDotnet);
 
 Carrer carrerDotnet = new Carrer("Especialista Em Dotnet","especialista-dotnet");
 
-IList<CarrerItem> carrerItems = new List<CarrerItem>();
-CarrerItem carrerItem1 = new CarrerItem(3,".Net","",null);
-CarrerItem carrerItem2 = new CarrerItem(2,"OOP","",null);
-CarrerItem carrerItem3 = new CarrerItem(1,"CSharp","",null);
 
-carrerItems.Add(carrerItem1);
-carrerItems.Add(carrerItem2);
-carrerItems.Add(carrerItem3);
+CarrerItem carrerItem1 = new CarrerItem(3,".Net","",courseDotnet);
+CarrerItem carrerItem2 = new CarrerItem(2,"OOP","",courseOop);
+CarrerItem carrerItem3 = new CarrerItem(1,"CSharp","",courseCSharp);
 
-carrerDotnet.Items = carrerItems;
+carrerDotnet.Items.Add(carrerItem1);
+carrerDotnet.Items.Add(carrerItem2);
+carrerDotnet.Items.Add(carrerItem3);
+
+
 IList<Carrer> carrers = new List<Carrer>();
 carrers.Add(carrerDotnet);
 
@@ -43,5 +43,6 @@ foreach (var carrer in carrers)
     foreach (var carrerItem in carrer.Items.OrderBy(x => x.Order))
     {
         System.Console.WriteLine($"{carrerItem.Order} -- {carrerItem.Title}");
+        System.Console.WriteLine($"{carrerItem.Course.Title}");
     }
 }
