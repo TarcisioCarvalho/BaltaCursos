@@ -25,7 +25,7 @@ courses.Add(courseDotnet);
 Carrer carrerDotnet = new Carrer("Especialista Em Dotnet","especialista-dotnet");
 
 
-CarrerItem carrerItem1 = new CarrerItem(3,".Net","",courseDotnet);
+CarrerItem carrerItem1 = new CarrerItem(3,".Net","",null);
 CarrerItem carrerItem2 = new CarrerItem(2,"OOP","",courseOop);
 CarrerItem carrerItem3 = new CarrerItem(1,"CSharp","",courseCSharp);
 
@@ -43,6 +43,11 @@ foreach (var carrer in carrers)
     foreach (var carrerItem in carrer.Items.OrderBy(x => x.Order))
     {
         System.Console.WriteLine($"{carrerItem.Order} -- {carrerItem.Title}");
-        System.Console.WriteLine($"{carrerItem.Course.Title}");
+        System.Console.WriteLine($"{carrerItem.Course?.Title}");
+
+        foreach (var notification in carrerItem.Notifications)
+        {
+            System.Console.WriteLine($"{notification.Message} --- {notification.Property}");
+        }
     }
 }

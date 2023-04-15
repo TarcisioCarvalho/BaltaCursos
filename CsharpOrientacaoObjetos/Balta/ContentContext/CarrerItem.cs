@@ -1,6 +1,8 @@
+using BALTA.NotificationContext;
+
 namespace BALTA.ContentContext
 {
-    public class CarrerItem
+    public class CarrerItem : Base
     {
         public int Order { get; set; }
 
@@ -12,7 +14,7 @@ namespace BALTA.ContentContext
 
         public CarrerItem(int order,string title,string description,Course course)
         {
-            if(course == null) throw new Exception("O Curso não pode ser nullo");
+            if(course == null) AddNotification(new Notification("Course","Curso Inválido"));
             Order = order;
             Title = title;
             Description = description;
