@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using BALTA.ContentContext;
+using BALTA.SubscriptionContext;
 
 var articles = new List<Article>();
 articles.Add(new Article("CSharp","Entendendo #"));
@@ -51,3 +52,8 @@ foreach (var carrer in carrers)
         }
     }
 }
+
+PaypalSubscription subscription = new PaypalSubscription();
+Student student = new Student();
+
+student.CreateSubscription(subscription);

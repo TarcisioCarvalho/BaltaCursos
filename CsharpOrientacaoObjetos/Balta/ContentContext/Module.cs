@@ -1,3 +1,5 @@
+using BALTA.SharedContext;
+
 namespace BALTA.ContentContext
 {
     public class Module : Base

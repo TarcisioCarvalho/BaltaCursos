@@ -1,4 +1,5 @@
 using BALTA.NotificationContext;
+using BALTA.SharedContext;
 
 namespace BALTA.ContentContext
 {
