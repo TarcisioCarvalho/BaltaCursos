@@ -7,14 +7,16 @@ using(var connection = new SqlConnection(connectionString))
 {
     System.Console.WriteLine("Conectado");
     connection.Open();
+    var category = new Category();
+    var insertSql = "INSERT INTO [CATEGORY] VALUES (id,title,url,summary,order,description,featured)";
     
     using (var command = new SqlCommand())
     {
 		//Teste
        var categories = connection.Query<Category>("SELECT [ID],[TITLE] FROM CATEGORY");
-       foreach (var category in categories)
+       foreach (var item in categories)
        {
-            System.Console.WriteLine($"{category.Id} --- {category.Title}");
+            System.Console.WriteLine($"{item.Id} --- {item.Title}");
        }
     }
 }
