@@ -48,3 +48,4 @@ C:\Users\tarci\Documents\BaltaCursos\AcessoADadosComDotNetCSharpDapperSqlServer\
 C:\Users\tarci\Documents\BaltaCursos\AcessoADadosComDotNetCSharpDapperSqlServer\obj\Debug\net6.0\AcessoADadosComDotNetCSharpDapperSqlServer.pdb
 C:\Users\tarci\Documents\BaltaCursos\AcessoADadosComDotNetCSharpDapperSqlServer\obj\Debug\net6.0\AcessoADadosComDotNetCSharpDapperSqlServer.genruntimeconfig.cache
 C:\Users\tarci\Documents\BaltaCursos\AcessoADadosComDotNetCSharpDapperSqlServer\obj\Debug\net6.0\ref\AcessoADadosComDotNetCSharpDapperSqlServer.dll
+C:\Users\tarci\Documents\BaltaCursos\AcessoADadosComDotNetCSharpDapperSqlServer\bin\Debug\net6.0\Dapper.dll
