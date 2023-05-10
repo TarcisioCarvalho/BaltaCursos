@@ -12,7 +12,8 @@ using(var connection = new SqlConnection(connectionString))
   // CreateManyCategory(connection);
    //ListCategories(connection);
 
-   ExecuteProcedure(connection);
+   //ExecuteProcedure(connection);
+   ExecuteReadProcedure(connection);
 }
 
 
@@ -147,3 +148,20 @@ static void ExecuteProcedure(SqlConnection connection)
 
   System.Console.WriteLine($"Linhas afetadas {affectedRows}");
 }
+
+static void ExecuteReadProcedure(SqlConnection connection)
+{
+  var sql = "[spGetCoursesByCategory]";
+  var pars = new { CategoryId = "09ce0b7b-cfca-497b-92c0-3290ad9d5142" };
+  var courses = connection.Query(sql,pars,commandType:CommandType.StoredProcedure);
+
+  
+
+  foreach (var course in courses)
+  {
+    System.Console.WriteLine($"{course.Id}");
+  }
+}
+
+
+//spGetCoursesByCategory
