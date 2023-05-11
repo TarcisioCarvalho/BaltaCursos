@@ -13,7 +13,8 @@ using(var connection = new SqlConnection(connectionString))
    //ListCategories(connection);
 
    //ExecuteProcedure(connection);
-   ExecuteReadProcedure(connection);
+  // ExecuteReadProcedure(connection);
+  CreateCategoryScalar(connection);
 }
 
 
@@ -163,5 +164,36 @@ static void ExecuteReadProcedure(SqlConnection connection)
   }
 }
 
+static void CreateCategoryScalar(SqlConnection connection)
+{
+  var category = new Category();
+    
+    category.Title = "AWS";
+    category.Order = 8;
+    category.Url = "amazon";
+    category.Description = "categoria destinada a serviço";
+    category.Summary = "AWS cloud";
+    category.Featured = false;
 
+    var insertSql = @"INSERT INTO [CATEGORY]
+    OUTPUT inserted.[Id]
+     VALUES (
+      NEWID(),
+      @Title,
+      @Url,
+      @Summary,
+      @Order,
+      @Description,
+      @Featured)";
+
+    var id = connection.ExecuteScalar<Guid>(insertSql,new {
+      category.Title,
+      category.Url,
+      category.Summary,
+      category.Order,
+      category.Description,
+      category.Featured
+    });
+    System.Console.WriteLine($"A categoria Inserida foi {id}");
+}
 //spGetCoursesByCategory
