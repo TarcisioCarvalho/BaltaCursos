@@ -196,4 +196,16 @@ static void CreateCategoryScalar(SqlConnection connection)
     });
     System.Console.WriteLine($"A categoria Inserida foi {id}");
 }
+
+static void OneToOne(SqlConnection connection)
+{
+  var sql = @"
+  SELECT 
+  *
+  FROM 
+    [CAREERITEM]
+  INNER JOIN [COURSE] ON [CAREERITEM].[COURSEID] = [COURSE].[ID]
+  ";
+  var itens = connection.Query(sql);
+}
 //spGetCoursesByCategory
