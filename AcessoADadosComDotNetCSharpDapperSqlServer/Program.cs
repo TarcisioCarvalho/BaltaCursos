@@ -14,7 +14,9 @@ using(var connection = new SqlConnection(connectionString))
 
    //ExecuteProcedure(connection);
   // ExecuteReadProcedure(connection);
-  CreateCategoryScalar(connection);
+  //CreateCategoryScalar(connection);
+   // OneToOne(connection);
+     OneToMany(connection);
 }
 
 
@@ -206,6 +208,49 @@ static void OneToOne(SqlConnection connection)
     [CAREERITEM]
   INNER JOIN [COURSE] ON [CAREERITEM].[COURSEID] = [COURSE].[ID]
   ";
-  var itens = connection.Query(sql);
+  var itens = connection.Query<CarrerItem,Course,CarrerItem>(
+    sql,
+    (carrerItem,course) => 
+    {
+      carrerItem.Course = course;
+      return carrerItem;
+    },splitOn:"Id");
+
+    foreach (var item in itens)
+    {
+      System.Console.WriteLine($"{item.Course.Title}");
+    }
+}
+
+static void OneToMany(SqlConnection connection)
+{
+  var sql = @"
+  SELECT 
+      [Career].[Id],
+      [Career].[Title],
+      [CareerItem].[CareerId],
+      [CareerItem].[Title]
+  FROM 
+      [Career] 
+  INNER JOIN 
+      [CareerItem] ON [CareerItem].[CareerId] = [Career].[Id]
+  ORDER BY
+      [Career].[Title]
+  ";
+  var careers = connection.Query<Career,CarrerItem,Career>(
+    sql,
+    (career,item) => 
+    {
+      return career;
+    },splitOn:"CareerId");
+
+    foreach (var career in careers)
+    {
+      System.Console.WriteLine($"{career.Title}");
+      foreach (var item in career.Itens)
+      {
+        System.Console.WriteLine($"{item.Title}");
+      }
+    }
 }
 //spGetCoursesByCategory
