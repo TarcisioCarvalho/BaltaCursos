@@ -237,10 +237,20 @@ static void OneToMany(SqlConnection connection)
   ORDER BY
       [Career].[Title]
   ";
+  var listCareers = new List<Career>();
   var careers = connection.Query<Career,CarrerItem,Career>(
     sql,
     (career,item) => 
     {
+      var car = listCareers.Where(x=> x.Id == career.Id).FirstOrDefault();
+      if(car != null) car.Itens.Add(item);
+      if(car == null)
+      {
+        car = career;
+        car.Itens.Add(item);
+        listCareers.Add(career);
+      }
+      
       return career;
     },splitOn:"CareerId");
 
