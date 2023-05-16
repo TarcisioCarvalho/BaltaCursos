@@ -1,0 +1,5 @@
+C:\Users\tarci\Documents\BaltaCursos\Blog\obj\Debug\net6.0\Blog.csproj.AssemblyReference.cache
+C:\Users\tarci\Documents\BaltaCursos\Blog\obj\Debug\net6.0\Blog.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tarci\Documents\BaltaCursos\Blog\obj\Debug\net6.0\Blog.AssemblyInfoInputs.cache
+C:\Users\tarci\Documents\BaltaCursos\Blog\obj\Debug\net6.0\Blog.AssemblyInfo.cs
+C:\Users\tarci\Documents\BaltaCursos\Blog\obj\Debug\net6.0\Blog.csproj.CoreCompileInputs.cache
