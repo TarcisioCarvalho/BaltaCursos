@@ -1,3 +1,5 @@
+using Dapper.Contrib.Extensions;
+
 namespace Blog.Models
 {
     [Table("[Category]")]
