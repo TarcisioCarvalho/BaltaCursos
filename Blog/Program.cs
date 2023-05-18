@@ -11,14 +11,14 @@ ReadUsers(connection);
 
    void ReadUsers(SqlConnection connection)
 {
-    
         var userRepository =  new UserRepository(connection);
         var users = userRepository.Get();
 
         foreach (var user in users)
-        {
-            System.Console.WriteLine($"{user.Id}---{user.Name}");
-        }
+        System.Console.WriteLine($"{user.Id}---{user.Name}");
+}
+void CreateUser(SqlConnection connection)
+{
     
 }
  
