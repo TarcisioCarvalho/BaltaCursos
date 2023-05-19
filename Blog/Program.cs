@@ -5,8 +5,8 @@ using Microsoft.Data.SqlClient;
 
 const string CONNECTION_STRING = "Server=(localdb)\\MSSQLLocalDB;Database=Blog;Trusted_Connection=True;MultipleActiveResultSets=True;";
 using var connection = new SqlConnection(CONNECTION_STRING);
-ReadUsers(connection);
-
+//ReadUsers(connection);
+ReadRoles(connection);
 
 
    void ReadUsers(SqlConnection connection)
@@ -17,10 +17,16 @@ ReadUsers(connection);
         foreach (var user in users)
         System.Console.WriteLine($"{user.Id}---{user.Name}");
 }
-void CreateUser(SqlConnection connection)
+
+   void ReadRoles(SqlConnection connection)
 {
-    
+        var roleRepository =  new RoleRepository(connection);
+        var roles = roleRepository.Get();
+
+        foreach (var role in roles)
+        System.Console.WriteLine($"{role.Id}---{role.Name}");
 }
+
  
         /* static void ReadUser(Repository<User> repository)
         {
