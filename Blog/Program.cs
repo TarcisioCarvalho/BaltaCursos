@@ -6,10 +6,35 @@ using Microsoft.Data.SqlClient;
 const string CONNECTION_STRING = "Server=(localdb)\\MSSQLLocalDB;Database=Blog;Trusted_Connection=True;MultipleActiveResultSets=True;";
 using var connection = new SqlConnection(CONNECTION_STRING);
 //ReadUsers(connection);
-ReadRoles(connection);
+//ReadRoles(connection);
+ReadUsersWithRoles(connection);
 
 
-   void ReadUsers(SqlConnection connection)
+void ReadUsers(SqlConnection connection)
+{
+        var userRepository =  new Repository<User>(connection);
+        var users = userRepository.Get();
+
+        foreach (var user in users)
+        System.Console.WriteLine($"{user.Id}---{user.Name}");
+}
+
+void ReadUsersWithRoles(SqlConnection connection)
+{
+        var userRepository =  new UserRepository (connection);
+        var users = userRepository.GetWithRoles();
+
+        foreach (var user in users)
+        {
+            System.Console.WriteLine($"{user.Id}---{user.Name}");
+            foreach (var item in user.Roles)
+            {
+                System.Console.WriteLine($"{item.Name}");
+            }
+        }
+        
+}
+/*    void ReadUsers(SqlConnection connection)
 {
         var userRepository =  new UserRepository(connection);
         var users = userRepository.Get();
@@ -26,7 +51,7 @@ ReadRoles(connection);
         foreach (var role in roles)
         System.Console.WriteLine($"{role.Id}---{role.Name}");
 }
-
+ */
  
         /* static void ReadUser(Repository<User> repository)
         {

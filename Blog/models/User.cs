@@ -5,10 +5,8 @@ namespace Blog.Models
     [Table("[User]")]
     public class User
     {
-        public User()
-        {
-            Roles = new List<Role>();
-        }
+        public User() => Roles = new List<Role>();
+        
 
         [Key] 
         public int Id { get; set; }
