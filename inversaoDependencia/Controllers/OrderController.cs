@@ -10,9 +10,18 @@ namespace DependencyStore.Controllers;
 public class OrderController : ControllerBase
 {
     private readonly ICustomerRepository _customerRepository;
-    public OrderController(ICustomerRepository customerRepository)
+    private readonly IDeliveryFeeService _deliveryFeeService;
+    private readonly IPromoCodeRepository _promoCodeRepository;
+    public OrderController
+    (
+    CustomerRepository customerRepository,
+    IDeliveryFeeService deliveryFeeService,
+    IPromoCodeRepository promoCodeRepository
+    )
     {
         _customerRepository = customerRepository;
+        _deliveryFeeService = deliveryFeeService;
+        _promoCodeRepository = promoCodeRepository;
     }
 
     [Route("v1/orders")]
@@ -23,19 +32,9 @@ public class OrderController : ControllerBase
         var customer = await _customerRepository.GetByIdAsync(customerId);
         if(customer == null)
          return null;
-         
+
         // #2 - Calcula o frete
-        decimal deliveryFee = 0;
-        var client = new RestClient("https://consultafrete.io/cep/");
-        var request = new RestRequest()
-            .AddJsonBody(new
-            {
-                zipCode
-            });
-        deliveryFee = await client.PostAsync<decimal>(request, new CancellationToken());
-        // Nunca é menos que R$ 5,00
-        if (deliveryFee < 5)
-            deliveryFee = 5;
+        decimal deliveryFee =await _deliveryFeeService.GetDeliveryFeeAsync(zipCode);
 
         // #3 - Calcula o total dos produtos
         decimal subTotal = 0;
@@ -50,15 +49,8 @@ public class OrderController : ControllerBase
         }
 
         // #4 - Aplica o cupom de desconto
-        decimal discount = 0;
-        await using (var conn = new SqlConnection("CONN_STRING"))
-        {
-            const string query = "SELECT * FROM PROMO_CODES WHERE CODE=@code";
-            var promo = await conn.QueryFirstAsync<PromoCode>(query, new { code = promoCode });
-            if (promo.ExpireDate > DateTime.Now)
-                discount = promo.Value;
-        }
-
+        var cupon = await _promoCodeRepository.GetPromoCodeAsync(promoCode);
+        var discount = cupon?.Value ?? 0M;
         // #5 - Gera o pedido
         var order = new Order();
         order.Code = Guid.NewGuid().ToString().ToUpper().Substring(0, 8);
